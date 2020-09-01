@@ -6,7 +6,7 @@
 
 
 from sklearn import svm
-
+import numpy as np
 ##################################################
 #####Hard coded (currently) where the datasets####
 #################are located######################
@@ -99,9 +99,9 @@ def calClass(svm,data):
     for x in data:
         num += 1
 	
-        if svm.predict(x) == attack:
+        if svm.predict(np.array(x).reshape(1, -1)) == attack:
             total_a += 1
-        elif svm.predict(x) == normal:
+        elif svm.predict(np.array(x).reshape(1, -1)) == normal:
             total_n += 1
         else:
             print("OOPS")
